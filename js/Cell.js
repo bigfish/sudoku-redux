@@ -1,10 +1,10 @@
 /*eslint no-unused-vars:0*/
 import React from 'react';
 
-const Cell = ({idx, val, changeHandler}) => (
+const Cell = ({row, col, val, changeHandler}) => (
     <input className='sudoku-cell' 
            value={val} 
-           onChange={ e => changeHandler(idx, e.target.value) }/>
+           onChange={ e => changeHandler(row, col,  e.target.value) }/>
 );
 
 export default Cell;

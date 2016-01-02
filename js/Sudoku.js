@@ -6,18 +6,16 @@ import Cell from './Cell';
 class Sudoku extends React.Component {
 
     render() {
-        let renderCell = (val, idx) => (<td key={`cell-${idx}`}>
-                        <Cell idx={idx} val={val}
+        let renderCell = (row, val, col) => (<td key={`cell-${col}`}>
+                        <Cell row={row} col={col} val={val}
                               changeHandler={this.props.onCellChange}
                             /></td>);
 
-        let renderRow = (rowNum) => (<tr key={`row-${rowNum}`}>{this.props.data.slice(rowNum*9, rowNum*9 + 9)
-                                         .map(renderCell)}
-                                     </tr>);
+        let renderRow = (row, rowNum) => (<tr key={`row-${rowNum}`}>{row.map(renderCell.bind(this, rowNum))}</tr>);
 
         return (<table className='sudoku-grid'>
                     <tbody>
-                        {[0,1,2,3,4,5,6,7,8,9].map(renderRow)}
+                        {this.props.data.map(renderRow)}
                     </tbody>
                 </table>);
     }

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import SudokuStore from './SudokuStore';
 import Sudoku from './Sudoku';
+import Immutable from 'immutable';
 
 function range(start, end) {
     let a = [];
@@ -20,19 +21,21 @@ function repeat(val, times) {
     return a;
 }
 
-let cells = range(0,9)
-            .map(row => (repeat(row,9)))
-            .reduce((prev, curr) => (prev.concat(curr)));
+let rows = range(0,9)
+            .map(row => (repeat(row,9)));
 
-let store = SudokuStore(cells);
+let store = SudokuStore(Immutable.fromJS(rows));
+
 
 function renderApp() {
 
-    ReactDOM.render(<Sudoku data={store.getState().data} 
-                    onCellChange={(idx, val) =>
+    let data = store.getState().data.toJS();
+    ReactDOM.render(<Sudoku data={data} 
+                    onCellChange={(row, col, val) =>
                         store.dispatch({
                             type: 'SET_VALUE',
-                            idx,
+                            row,
+                            col,
                             val
                         })}/>,
         document.getElementById('sudoku'));
