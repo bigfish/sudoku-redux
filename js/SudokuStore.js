@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
-//import Immutable from 'immutable';
 
 //rows is an Immutable List of Lists
+//used as initial state
 const SudokuStore = (rows) => {
 
     const reducer = (state = {data: rows}, action) => {

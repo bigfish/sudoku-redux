@@ -29,8 +29,7 @@ let store = SudokuStore(Immutable.fromJS(rows));
 
 function renderApp() {
 
-    let data = store.getState().data.toJS();
-    ReactDOM.render(<Sudoku data={data} 
+    ReactDOM.render(<Sudoku data={store.getState().data} 
                     onCellChange={(row, col, val) =>
                         store.dispatch({
                             type: 'SET_VALUE',
