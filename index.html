@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1" >
+    <title>SuDoku</title>
+    <!--jspm loader-->
+    <script src="./jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <script src="./babel-bundle.js"></script>
+    <script src="./react-bundle.js"></script>
+
+  </head>
+  <body>
+    <div id="sudoku"></div>
+    <script>
+      //jspm-hot-reloader boilerplate
+      //for localhost / dev only
+      if (location.origin.match(/localhost/)) { 
+        System.trace = true
+        System.import('capaj/systemjs-hot-reloader').then(function(HotReloader){
+            new HotReloader.default('http://localhost:9080')  // chokidar-socket-emitter port
+        });
+      }
+      System.import('js/main.js');
+    </script>
+  </body>
+</html>
+
