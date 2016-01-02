@@ -8,5 +8,3 @@ const Cell = ({idx, val, changeHandler}) => (
 );
 
 export default Cell;
-
-
