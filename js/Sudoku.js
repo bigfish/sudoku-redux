@@ -2,34 +2,22 @@
 /*eslint no-unused-vars:0*/
 import React from 'react';
 import Cell from './Cell';
-import store from './SudokuStore';
 
 class Sudoku extends React.Component {
 
-    onCellChange(idx, val) {
-    
-        store.dispatch({
-            type: 'SET_VALUE',
-            idx,
-            val
-        });
-    
-    }
-
     render() {
-        let { data } = store.getState();
+        let renderCell = (val, idx) => (<td key={`cell-${idx}`}>
+                        <Cell idx={idx} val={val}
+                              changeHandler={this.props.onCellChange}
+                            /></td>);
+
+        let renderRow = (rowNum) => (<tr key={`row-${rowNum}`}>{this.props.data.slice(rowNum*9, rowNum*9 + 9)
+                                         .map(renderCell)}
+                                     </tr>);
 
         return (<table className='sudoku-grid'>
                     <tbody>
-                    <tr>
-                        <td>
-                        <Cell idx={0} 
-                              val={data[0]}
-                              changeHandler={this.onCellChange.bind(this)}
-                            />
-
-                        </td>
-                    </tr>
+                        {[0,1,2,3,4,5,6,7,8,9].map(renderRow)}
                     </tbody>
                 </table>);
     }
