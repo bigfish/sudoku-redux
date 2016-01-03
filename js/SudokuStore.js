@@ -5,15 +5,16 @@ import { createStore } from 'redux';
 const SudokuStore = (rows) => {
 
     const reducer = (state = {data: rows}, action) => {
-        //prevent mutating array of cells
 
+        let newState = state;
         if (action.type === 'SET_VALUE') {
-            return {
-                data: state.data.setIn([action.row, action.col], action.value)
+            newState = {
+                data: state.data.setIn([action.row, action.col], action.val)
             };
         }
+        console.dir(JSON.stringify(newState.data));
 
-        return state;
+        return newState;
 
     };
 

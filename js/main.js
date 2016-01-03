@@ -7,7 +7,7 @@ import Immutable from 'immutable';
 
 function range(start, end) {
     let a = [];
-    for (let i = 0; i <= end; i++) {
+    for (let i = start; i <= end; i++) {
         a.push(i);
     }
     return a;
@@ -21,7 +21,7 @@ function repeat(val, times) {
     return a;
 }
 
-let rows = range(0,9)
+let rows = range(1,9)
             .map(row => (repeat(row,9)));
 
 let store = SudokuStore(Immutable.fromJS(rows));
