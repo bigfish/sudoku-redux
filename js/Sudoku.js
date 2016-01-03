@@ -5,7 +5,7 @@ import Cell from './Cell';
 const Sudoku = ({data, onCellChange}) => {
 
     let renderCell = (row, val, col) => (<td key={`cell-${col}`}>
-                    <Cell row={row} col={col} val={val}
+                         <Cell row={row} col={col} val={val} 
                           changeHandler={onCellChange}
                         /></td>);
 

@@ -50,7 +50,16 @@ table.sudoku-grid {
     color: #333;
     display:inline-block;
     font-size: 20px;
-    width: 25px;
+    width: 30px;
+    height: 30px;
     border:none;
     text-align:center;
+    padding-left: 8px;
+}
+
+.sudoku-grid input.sudoku-cell:focus {
+    background-color: rgba(0,125,255,0.5);
+}
+.sudoku-grid input.sudoku-cell.empty {
+    color: rgba(0,0,0,0);
 }
