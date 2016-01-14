@@ -6,9 +6,9 @@ const Cell = ({row, col, val, changeHandler}) => (
            min="0"
            max="9"
            step="1"
-           maxlength="1"
-           className={'sudoku-cell' + ( val ? '' : ' empty')} 
-           value={val} 
+           maxLength="1"
+           className={'sudoku-cell' + ( val ? '' : ' empty')}
+           value={val}
            onChange={ e => changeHandler(row, col,  e.target.value) }/>
 );
 

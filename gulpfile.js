@@ -5,14 +5,16 @@ var browserSync = require('browser-sync').create();
 gulp.task('dev', ['css'], function () {
     
     browserSync.init({
-        server: "./",
-        port: 8080
+        proxy: "localhost:9080"
     });
 
     gulp.watch("css/*.css", ['css']);
-    gulp.watch(["index.html", "js/main.js", "js/**/*.js"]).on('change', browserSync.reload);
+    //gulp.watch(["index.html", "js/main.js", "js/**/*.js"]).on('change', browserSync.reload);
 });
 
+browserSync.emitter.on('service:running', function (data) {
+    console.log(data.options.get('snippet'));
+});
 
 gulp.task('css', function () {
     return gulp.src("css/*.css")
