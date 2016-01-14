@@ -13,3 +13,4 @@ const Cell = ({row, col, val, changeHandler}) => (
 );
 
 export default Cell;
+

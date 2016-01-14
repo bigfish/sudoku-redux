@@ -27,6 +27,7 @@ const SudokuStore = (rows) => {
             };
         }
         console.dir(JSON.stringify(newState.data));
+        //do validations, so errors can be indicated to user
 
         return newState;
 
