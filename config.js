@@ -18,10 +18,12 @@ System.config({
     "babel-runtime": "npm:babel-runtime@5.8.34",
     "capaj/systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@0.5.1",
     "core-js": "npm:core-js@1.2.6",
+    "fetch": "github:github/fetch@0.10.1",
     "immutable": "npm:immutable@3.7.6",
     "react": "npm:react@0.14.5",
     "react-dom": "npm:react-dom@0.14.5",
     "redux": "npm:redux@3.0.5",
+    "whatwg-fetch": "npm:whatwg-fetch@0.10.1",
     "github:capaj/systemjs-hot-reloader@0.5.1": {
       "debug": "npm:debug@2.2.0",
       "socket.io-client": "github:socketio/socket.io-client@1.3.7",

@@ -21,11 +21,13 @@ const SudokuStore = (rows) => {
         newVal = parseInt(newVal);
 
         let newState = state;
+
         if (action.type === 'SET_VALUE') {
             newState = {
                 data: state.data.setIn([action.row, action.col], newVal)
             };
         }
+
         console.dir(JSON.stringify(newState.data));
         //do validations, so errors can be indicated to user
 

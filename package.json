@@ -11,10 +11,12 @@
   "jspm": {
     "dependencies": {
       "capaj/systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@^0.5.1",
+      "fetch": "github:github/fetch@^0.10.1",
       "immutable": "npm:immutable@^3.7.6",
       "react": "npm:react@^0.14.5",
       "react-dom": "npm:react-dom@^0.14.5",
-      "redux": "npm:redux@^3.0.5"
+      "redux": "npm:redux@^3.0.5",
+      "whatwg-fetch": "npm:whatwg-fetch@^0.10.1"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",

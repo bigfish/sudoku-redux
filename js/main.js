@@ -4,6 +4,7 @@ import React from 'react';
 import SudokuStore from './SudokuStore';
 import Sudoku from './Sudoku';
 import Immutable from 'immutable';
+import 'fetch';
 
 function range(start, end) {
     let a = [];
@@ -21,13 +22,28 @@ function repeat(val, times) {
     return a;
 }
 
+let store;
+
 let rows = range(1,9)
             .map(row => (repeat(row,9)));
 
-let store = SudokuStore(Immutable.fromJS(rows));
+let gameData = fetch('data/game1.json')
+                .then(resp => resp.json())
+                .then(json => {
+                    init(json);
+                }).catch(function(ex) {
+                    console.log('parsing failed', ex);
+                });
 
+function init(gridData) {
+    store = SudokuStore(Immutable.fromJS(gridData));
+    store.subscribe(renderApp);
+    renderApp();
+}
 
 function renderApp() {
+    console.log('renderApp');
+    
 
     ReactDOM.render(<Sudoku data={store.getState().data} 
                     onCellChange={(row, col, val) =>
@@ -42,5 +58,3 @@ function renderApp() {
 }
 
 
-store.subscribe(renderApp);
-renderApp();
