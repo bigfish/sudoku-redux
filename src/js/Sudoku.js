@@ -1,17 +1,18 @@
-/*eslint no-unused-vars:0*/
+/* eslint no-unused-vars:0*/
 import React from 'react';
 import Cell from './Cell';
 
-const Sudoku = ({data, onCellChange}) => {
+const Sudoku = ({ data, onCellChange }) => {
+  const renderCell = (row, val, col) => (<td key={`cell-${col}`}>
+                         <Cell row={row} col={col} val={val}
+                           changeHandler={onCellChange}
+                         /></td>);
 
-    let renderCell = (row, val, col) => (<td key={`cell-${col}`}>
-                         <Cell row={row} col={col} val={val} 
-                          changeHandler={onCellChange}
-                        /></td>);
+  const renderRow = (row, rowNum) => (<tr key={`row-${rowNum}`}>
+                                                           {row.map(renderCell.bind(this, rowNum))
+                                                           }</tr>);
 
-    let renderRow = (row, rowNum) => (<tr key={`row-${rowNum}`}>{row.map(renderCell.bind(this, rowNum))}</tr>);
-
-    return (<table className='sudoku-grid'>
+  return (<table className="sudoku-grid">
                 <tbody>
                     {data.map(renderRow)}
                 </tbody>
