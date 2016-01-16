@@ -5,27 +5,7 @@ import SudokuStore from './SudokuStore';
 import Sudoku from './Sudoku';
 import Immutable from 'immutable';
 import 'fetch';
-
-function range(start, end) {
-    let a = [];
-    for (let i = start; i <= end; i++) {
-        a.push(i);
-    }
-    return a;
-}
-
-function repeat(val, times) {
-    let a = [];
-    for (let i = 0; i < times; i++) {
-        a.push(val);
-    }
-    return a;
-}
-
-let store;
-
-let rows = range(1,9)
-            .map(row => (repeat(row,9)));
+import DevTools from './DevTools';
 
 let gameData = fetch('data/game1.json')
                 .then(resp => resp.json())
@@ -34,6 +14,7 @@ let gameData = fetch('data/game1.json')
                 }).catch(function(ex) {
                     console.log('parsing failed', ex);
                 });
+let store;
 
 function init(gridData) {
     store = SudokuStore(Immutable.fromJS(gridData));
@@ -45,14 +26,21 @@ function renderApp() {
     console.log('renderApp');
     
 
-    ReactDOM.render(<Sudoku data={store.getState().data} 
-                    onCellChange={(row, col, val) =>
-                        store.dispatch({
-                            type: 'SET_VALUE',
-                            row,
-                            col,
-                            val
-                        })}/>,
+    ReactDOM.render(<div>
+                        <div>
+                            <Sudoku data={store.getState().data} 
+                                    onCellChange={(row, col, val) =>
+                                    store.dispatch({
+                                        type: 'SET_VALUE',
+                                        row,
+                                        col,
+                                        val
+                                    })}/>
+                        </div>
+                        <div>
+                            <DevTools />
+                        </div>
+                    </div>,
         document.getElementById('sudoku'));
 
 }

@@ -1,0 +1,46 @@
+{
+  "name": "sudoku",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "eslint": "eslint"
+  },
+  "author": "",
+  "license": "ISC",
+  "jspm": {
+    "dependencies": {
+      "capaj/systemjs-hot-reloader": "github:capaj/systemjs-hot-reloader@^0.5.1",
+      "fetch": "github:github/fetch@^0.10.1",
+      "immutable": "npm:immutable@^3.7.6",
+      "react": "npm:react@^0.14.5",
+      "react-dom": "npm:react-dom@^0.14.5",
+      "redux": "npm:redux@^3.0.5",
+      "redux-devtools": "npm:redux-devtools@^3.0.1",
+      "redux-devtools-dock-monitor": "npm:redux-devtools-dock-monitor@^1.0.1",
+      "redux-devtools-log-monitor": "npm:redux-devtools-log-monitor@^1.0.2",
+      "whatwg-fetch": "npm:whatwg-fetch@^0.10.1"
+    },
+    "devDependencies": {
+      "babel": "npm:babel-core@^5.8.24",
+      "babel-runtime": "npm:babel-runtime@^5.8.24",
+      "core-js": "npm:core-js@^1.1.4"
+    }
+  },
+  "devDependencies": {
+    "chokidar-socket-emitter": "^0.3.0",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^3.1.0",
+    "eslint-plugin-react": "^3.15.0",
+    "gulp": "^3.9.0",
+    "http-server": "^0.8.5",
+    "jspm": "^0.16.23"
+  },
+  "dependencies": {
+    "browser-sync": "^2.11.0",
+    "eslint": "^1.10.3",
+    "eslint-config-airbnb": "^3.1.0",
+    "eslint-plugin-react": "^3.15.0"
+  }
+}

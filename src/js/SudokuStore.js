@@ -1,4 +1,7 @@
 import { createStore } from 'redux';
+import DevTools from './DevTools';
+
+const createInstrumentedStore = compose(DevTools.instrument())(createStore);
 
 //rows is an Immutable List of Lists
 //used as initial state
@@ -35,7 +38,7 @@ const SudokuStore = (rows) => {
 
     };
 
-    return createStore(reducer);
+    return createInstrumentedStore(reducer);
 };
 
 
