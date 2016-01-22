@@ -4,41 +4,39 @@ import React from 'react';
 import SudokuStore from './SudokuStore';
 import Sudoku from './Sudoku';
 import Immutable from 'immutable';
-import 'fetch';
+import 'whatwg-fetch';
 import DevTools from './DevTools';
 
 let gameData = fetch('data/game1.json')
                 .then(resp => resp.json())
                 .then(json => {
-                    init(json);
-                }).catch(function(ex) {
-                    console.log('parsing failed', ex);
+                  init(json);
+                }).catch(function (ex) {
+                  console.log('parsing failed', ex);
                 });
 let store;
 
 function init(gridData) {
-    store = SudokuStore(Immutable.fromJS(gridData));
-    store.subscribe(renderApp);
-    renderApp();
+  store = SudokuStore(Immutable.fromJS(gridData));
+  store.subscribe(renderApp);
+  renderApp();
 }
 
 function renderApp() {
-    console.log('renderApp');
-    
 
-    ReactDOM.render(<div>
+  ReactDOM.render(<div>
                         <div>
-                            <Sudoku data={store.getState().data} 
+                            <Sudoku data={store.getState().data}
                                     onCellChange={(row, col, val) =>
                                     store.dispatch({
-                                        type: 'SET_VALUE',
-                                        row,
-                                        col,
-                                        val
+                                      type: 'SET_VALUE',
+                                      row,
+                                      col,
+                                      val
                                     })}/>
                         </div>
                         <div>
-                            <DevTools />
+                            <DevTools store={store}/>
                         </div>
                     </div>,
         document.getElementById('sudoku'));
