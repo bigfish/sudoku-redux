@@ -27,13 +27,15 @@ function renderApp() {
   ReactDOM.render(<div>
                         <div>
                             <Sudoku data={store.getState().data}
-                                    onCellChange={(row, col, val) =>
-                                    store.dispatch({
-                                      type: 'SET_VALUE',
-                                      row,
-                                      col,
-                                      val
-                                    })}/>
+                                    onCellChange={(row, col, val) => {
+                                      store.dispatch({
+                                        type: 'SET_VALUE',
+                                        row,
+                                        col,
+                                        val
+                                      });
+                                    }
+                                    }/>
                         </div>
                         <div>
                             <DevTools store={store}/>

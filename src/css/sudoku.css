@@ -60,5 +60,5 @@ table.sudoku-grid {
     background-color: rgba(0,125,255,0.5);
 }
 .sudoku-grid input.sudoku-cell.empty {
-    color: rgba(0,0,0,0);
+    /*color: rgba(0,0,0,0);*/
 }

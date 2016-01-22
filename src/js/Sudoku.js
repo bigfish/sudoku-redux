@@ -2,21 +2,36 @@
 import React from 'react';
 import Cell from './Cell';
 
-const Sudoku = ({ data, onCellChange }) => {
-  const renderCell = (row, val, col) => (<td key={`cell-${col}`}>
-                         <Cell row={row} col={col} val={val}
-                           changeHandler={onCellChange}
-                         /></td>);
+class Sudoku extends React.Component {
 
-  const renderRow = (row, rowNum) => (<tr key={`row-${rowNum}`}>
-                                                           {row.map(renderCell.bind(this, rowNum))
-                                                           }</tr>);
+  renderCell(row, val, col) {
 
-  return (<table className="sudoku-grid">
-                <tbody>
-                    {data.map(renderRow)}
-                </tbody>
-            </table>);
-};
+    return (<td key={`cell-${col}`}>
+      <Cell row={row} col={col} val={val}
+        changeHandler={this.props.onCellChange}
+      /></td>);
+
+  }
+
+  renderRow(row, rowNum) {
+
+    return (<tr key={`row-${rowNum}`}>
+      {row.map(this.renderCell.bind(this, rowNum))
+      }</tr>);
+  }
+
+  render() {
+    console.log('rendered Sudoku');
+
+    return (<table className="sudoku-grid foobar">
+      <tbody>
+        {this.props.data.map(this.renderRow.bind(this))}
+      </tbody>
+    </table>);
+
+  }
+
+
+}
 
 export default Sudoku;
