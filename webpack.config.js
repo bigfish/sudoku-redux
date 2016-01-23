@@ -5,7 +5,8 @@ module.exports = {
   },
   externals: {
     react: 'React',
-    'react-dom': 'ReactDOM'
+    'react-dom': 'ReactDOM',
+    immutable: 'Immutable'
   },
   module: {
     loaders: [{
@@ -16,6 +17,10 @@ module.exports = {
         cacheDirectory: true,
         presets: ['react', 'es2015', 'stage-0']
       }
+    },
+    { 
+      test: /\.css$/,
+      loader: "style-loader!css-loader"
     }],
   },
   devtool: 'source-map',

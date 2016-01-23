@@ -6,6 +6,7 @@ import Sudoku from './Sudoku';
 import Immutable from 'immutable';
 import 'whatwg-fetch';
 import DevTools from './DevTools';
+import '../css/sudoku.css';
 
 let gameData = fetch('data/game1.json')
                 .then(resp => resp.json())
