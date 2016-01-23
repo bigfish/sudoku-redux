@@ -53,11 +53,11 @@ table.sudoku-grid {
     height: 30px;
     border:none;
     text-align:center;
-    padding: 5px 0 5px 10px;
+    padding: 5px;
 }
 
 .sudoku-grid input.sudoku-cell:focus {
-    background-color: rgba(0,125,255,0.5);
+    /*background-color: rgba(0,125,255,0.5);*/
 }
 .sudoku-grid input.sudoku-cell.empty {
     /*color: rgba(0,0,0,0);*/

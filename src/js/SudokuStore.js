@@ -11,14 +11,8 @@ const SudokuStore = (rows) => {
 
     let newVal = action.val;
 
-        //normalize value in case user typed in invalid value
-        //falsy, or negative values are 0
-    if (!action.val || action.val < 0) {
+    if (!action.val) {
       newVal = 0;
-    }
-        //only use last digit typed -- this is probably what user wants
-    if (action.val > 9) {
-      newVal = action.val % 10;//get remainder after dividing by 10 => units
     }
 
     newVal = parseInt(newVal);

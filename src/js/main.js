@@ -29,6 +29,7 @@ function renderApp() {
                         <div>
                             <Sudoku data={store.getState().data}
                                     onCellChange={(row, col, val) => {
+                                      //check if value is different
                                       store.dispatch({
                                         type: 'SET_VALUE',
                                         row,
