@@ -2,9 +2,7 @@
 import React from 'react';
 
 class Cell extends React.Component {
-
   render() {
-    //{row, col, val, changeHandler}
     return (
       <input type="number"
         min="0"

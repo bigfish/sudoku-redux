@@ -29,6 +29,7 @@ const SudokuStore = (rows) => {
       newState = {
         data: state.data.setIn([action.row, action.col], newVal)
       };
+
     }
 
     console.dir(JSON.stringify(newState.data));
