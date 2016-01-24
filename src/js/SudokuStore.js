@@ -26,7 +26,7 @@ const SudokuStore = (rows) => {
 
     }
 
-    console.dir(JSON.stringify(newState.data));
+    //console.dir(JSON.stringify(newState.data));
         //do validations, so errors can be indicated to user
 
     return newState;
@@ -35,6 +35,12 @@ const SudokuStore = (rows) => {
 
   return createInstrumentedStore(reducer);
 };
+ 
+//prevnt hot-reloader from reloading parent modules (modules which required this one)
+if(module.hot) {
+  console.log("accepting change!");
+  module.hot.accept();
+}
 
 
 export default SudokuStore;
