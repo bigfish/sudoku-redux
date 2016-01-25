@@ -21,7 +21,6 @@ class Sudoku extends React.Component {
   }
 
   render() {
-    console.log('rendered Sudoku');
 
     return (<table className="sudoku-grid foobar">
       <tbody>

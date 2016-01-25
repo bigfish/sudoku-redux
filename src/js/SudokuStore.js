@@ -1,47 +1,29 @@
 import { createStore, compose } from 'redux';
 import DevTools from './DevTools';
+import reducer from './reducer';
 
 const createInstrumentedStore = compose(DevTools.instrument())(createStore);
 
 //rows is an Immutable List of Lists
 //used as initial state
-const SudokuStore = (rows) => {
+function SudokuStore(rows) {
 
-  const reducer = (state = { data: rows }, action) => {
+  const store = createInstrumentedStore(reducer, {data: rows});
 
-    let newVal = action.val;
+  //https://github.com/gaearon/redux-devtools
+  if (module.hot) {
 
-    if (!action.val) {
-      newVal = 0;
-    }
+    //don't bubble this change up, forcing app to re-render
+    //comment out if you do want it to re-render..
+    module.accept();
 
-    newVal = parseInt(newVal);
-
-    let newState = state;
-
-    if (action.type === 'SET_VALUE') {
-      newState = {
-        data: state.data.setIn([action.row, action.col], newVal)
-      };
-
-    }
-
-    //console.dir(JSON.stringify(newState.data));
-        //do validations, so errors can be indicated to user
-
-    return newState;
-
-  };
-
-  return createInstrumentedStore(reducer);
-};
- 
-//prevnt hot-reloader from reloading parent modules (modules which required this one)
-if(module.hot) {
-  console.log("accepting change!");
-  module.hot.accept();
+    // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
+    module.hot.accept('./reducer', () => {
+                      store.replaceReducer(require('./reducer').default)
+                   });
+  }
+  return store;
 }
-
 
 export default SudokuStore;
 

@@ -8,23 +8,58 @@ import 'whatwg-fetch';
 import DevTools from './DevTools';
 import '../css/sudoku.css';
 
-let gameData = fetch('data/game1.json')
-                .then(resp => resp.json())
-                .then(json => {
-                  init(json);
-                }).catch(function (ex) {
-                  console.log('parsing failed', ex);
-                });
-let store;
+var store;
+let unsubscribe;
 
-function init(gridData) {
-  store = SudokuStore(Immutable.fromJS(gridData));
-  store.subscribe(renderApp);
-  renderApp();
+init();
+
+if(module.hot) {
+
+  module.hot.accept();
+
+  /*module.hot.accept('./SudokuStore', function (arf) {
+    
+    console.log("main.js: detected SudokuStore change!");
+    //we have to manually require and update the store module when it changes
+    //we cannot assign to module import as that is immutable
+    //so we use the new Store factory to create a new store
+    //and initialize it with current state of the store
+    let NewSudokuStore = require('./SudokuStore').default;
+    //unsubscribe from old store
+    unsubscribe();
+    let data = store.getState().data;
+    //assign to store closure variable
+    store = NewSudokuStore(Immutable.fromJS(data));
+    //update unsubscribe closure variable
+    unsubscribe = store.subscribe(renderApp);
+
+    renderApp();
+  })*/
+
+}
+
+
+function init() {
+
+  fetch('data/game1.json')
+  .then(resp => resp.json())
+  .then(json => {
+
+    store = SudokuStore(Immutable.fromJS(json));
+    unsubscribe = store.subscribe(renderApp);
+
+    renderApp();
+
+  }).catch(function (ex) {
+    console.log('parsing failed', ex);
+  });
+
 }
 
 function renderApp() {
 
+  console.log('renderApp');
+  
   ReactDOM.render(<div>
                         <div>
                             <Sudoku data={store.getState().data}
