@@ -13,32 +13,6 @@ let unsubscribe;
 
 init();
 
-if(module.hot) {
-
-  module.hot.accept();
-
-  /*module.hot.accept('./SudokuStore', function (arf) {
-    
-    console.log("main.js: detected SudokuStore change!");
-    //we have to manually require and update the store module when it changes
-    //we cannot assign to module import as that is immutable
-    //so we use the new Store factory to create a new store
-    //and initialize it with current state of the store
-    let NewSudokuStore = require('./SudokuStore').default;
-    //unsubscribe from old store
-    unsubscribe();
-    let data = store.getState().data;
-    //assign to store closure variable
-    store = NewSudokuStore(Immutable.fromJS(data));
-    //update unsubscribe closure variable
-    unsubscribe = store.subscribe(renderApp);
-
-    renderApp();
-  })*/
-
-}
-
-
 function init() {
 
   fetch('data/game1.json')

@@ -15,7 +15,7 @@ function SudokuStore(rows) {
 
     //don't bubble this change up, forcing app to re-render
     //comment out if you do want it to re-render..
-    module.accept();
+    module.hot.accept();
 
     // Hot reload reducers (requires Webpack or Browserify HMR to be enabled)
     module.hot.accept('./reducer', () => {
